@@ -31,4 +31,12 @@ class KataTest {
 		int result = kata.add("5,1");
 		assertEquals(6, result);
 	}
+
+	@Test
+	void testStringFive() {
+
+		KataMain kata = new KataMain();
+		int result = kata.add("5,4,3,2,1");
+		assertEquals(15, result);
+	}
 }
