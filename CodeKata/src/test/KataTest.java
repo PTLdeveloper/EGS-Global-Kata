@@ -65,6 +65,12 @@ class KataTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 
+	@Test
+	void testStringBigNumbers() throws Exception {
+		KataMain kata = new KataMain();
+		int result = kata.add("1001,2,1");
+		assertEquals(3, result);
 	}
 }

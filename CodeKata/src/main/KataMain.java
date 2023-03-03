@@ -26,6 +26,9 @@ public class KataMain {
 
 				int num = Integer.valueOf(number);
 
+				if (num > 1000)
+					continue;
+
 				if (num < 0) {
 
 					if (!negativeNumbers.isEmpty()) {
