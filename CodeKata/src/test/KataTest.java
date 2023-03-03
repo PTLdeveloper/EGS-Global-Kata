@@ -52,7 +52,7 @@ class KataTest {
 	void testStringDelimiter() throws Exception {
 
 		KataMain kata = new KataMain();
-		int result = kata.add("\\;1\n2;3");
+		int result = kata.add("//;1\n2;3");
 		assertEquals(6, result);
 	}
 
@@ -73,4 +73,12 @@ class KataTest {
 		int result = kata.add("1001,2,1");
 		assertEquals(3, result);
 	}
+
+	@Test
+	void testStringBigDelimiters() throws Exception {
+		KataMain kata = new KataMain();
+		int result = kata.add("//[|||]\n1|||2|||3");
+		assertEquals(6, result);
+	}
+
 }

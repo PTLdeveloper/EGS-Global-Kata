@@ -12,10 +12,17 @@ public class KataMain {
 		String delimiter = ","; // default delimiter
 
 		// Check for delimiter
-		if (stringNumbers.startsWith("\\") & stringNumbers.length() >= 3) {
-			delimiter = stringNumbers.substring(1, 2);
+		if (stringNumbers.startsWith("//") & stringNumbers.length() >= 3) {
+			delimiter = stringNumbers.substring(2, 3);
 
-			stringNumbers = stringNumbers.substring(2);
+			if (delimiter.equals("[")) {
+				int endDelimeterIndex = stringNumbers.indexOf("]");
+				delimiter = stringNumbers.substring(3, endDelimeterIndex);
+				stringNumbers = stringNumbers.substring(endDelimeterIndex + 1);
+			} else {
+				stringNumbers = stringNumbers.substring(3);
+			}
+
 		}
 
 		stringNumbers = stringNumbers.replace("\n", delimiter);
