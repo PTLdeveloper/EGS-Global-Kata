@@ -9,7 +9,7 @@ import main.KataMain;
 class KataTest {
 
 	@Test
-	void testEmptyString() {
+	void testEmptyString() throws Exception {
 
 		KataMain kata = new KataMain();
 		int result = kata.add("");
@@ -17,7 +17,7 @@ class KataTest {
 	}
 
 	@Test
-	void testStringOne() {
+	void testStringOne() throws Exception {
 
 		KataMain kata = new KataMain();
 		int result = kata.add("5");
@@ -25,7 +25,7 @@ class KataTest {
 	}
 
 	@Test
-	void testStringTwo() {
+	void testStringTwo() throws Exception {
 
 		KataMain kata = new KataMain();
 		int result = kata.add("5,1");
@@ -33,7 +33,7 @@ class KataTest {
 	}
 
 	@Test
-	void testStringFive() {
+	void testStringFive() throws Exception {
 
 		KataMain kata = new KataMain();
 		int result = kata.add("5,4,3,2,1");
@@ -41,10 +41,30 @@ class KataTest {
 	}
 
 	@Test
-	void testStringLines() {
+	void testStringLines() throws Exception {
 
 		KataMain kata = new KataMain();
 		int result = kata.add("1\n2,3");
 		assertEquals(6, result);
+	}
+
+	@Test
+	void testStringDelimiter() throws Exception {
+
+		KataMain kata = new KataMain();
+		int result = kata.add("\\;1\n2;3");
+		assertEquals(6, result);
+	}
+
+	@Test
+	void testStrinNegative() {
+
+		KataMain kata = new KataMain();
+		try {
+			int result = kata.add("2,-4,3,-5");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 }
