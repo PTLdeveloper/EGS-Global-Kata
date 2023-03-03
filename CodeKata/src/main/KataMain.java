@@ -1,32 +1,20 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class KataMain {
 
+	private final String DEFAULT_DELIMITER = ",";
+
 	public int add(String stringNumbers) throws Exception {
 		int total = 0;
 		String negativeNumbers = new String();
 
-		String delimiter = ","; // default delimiter
+		String cleanStringNumbers = cleanString(stringNumbers);
 
-		// Check for delimiter
-		if (stringNumbers.startsWith("//") & stringNumbers.length() >= 3) {
-			delimiter = stringNumbers.substring(2, 3);
-
-			if (delimiter.equals("[")) {
-				int endDelimeterIndex = stringNumbers.indexOf("]");
-				delimiter = stringNumbers.substring(3, endDelimeterIndex);
-				stringNumbers = stringNumbers.substring(endDelimeterIndex + 1);
-			} else {
-				stringNumbers = stringNumbers.substring(3);
-			}
-
-		}
-
-		stringNumbers = stringNumbers.replace("\n", delimiter);
-		List<String> numbers = Arrays.asList(stringNumbers.split(delimiter));
+		List<String> numbers = Arrays.asList(cleanStringNumbers.split(DEFAULT_DELIMITER));
 
 		for (String number : numbers) {
 			try {
@@ -55,6 +43,42 @@ public class KataMain {
 		}
 
 		return total;
+
+	}
+
+	private String cleanString(String text) {
+
+		// Find delimiters
+		List<String> delimiters = new ArrayList<>();
+
+		if (text.startsWith("//") & text.length() >= 3) {
+
+			String delimiter = text.substring(2, 3);
+
+			if (delimiter.equals("[")) {
+				while ((text.contains("["))) {
+					int startDelimeterIndex = text.indexOf("[");
+					int endDelimeterIndex = text.indexOf("]");
+					delimiter = text.substring(startDelimeterIndex + 1, endDelimeterIndex);
+					delimiters.add(delimiter);
+					text = text.substring(endDelimeterIndex + 1);
+				}
+			} else {
+				delimiters.add(delimiter);
+				text = text.substring(3);
+			}
+
+		}
+
+		// Clean the string
+
+		text = text.replace("\n", DEFAULT_DELIMITER);
+
+		for (String delimiter : delimiters) {
+			text = text.replace(delimiter, DEFAULT_DELIMITER);
+		}
+
+		return text;
 
 	}
 }

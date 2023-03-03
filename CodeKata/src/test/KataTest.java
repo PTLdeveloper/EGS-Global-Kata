@@ -81,4 +81,11 @@ class KataTest {
 		assertEquals(6, result);
 	}
 
+	@Test
+	void testStringMultipleDelimiters() throws Exception {
+		KataMain kata = new KataMain();
+		int result = kata.add("//[|][%]\n1|2%3");
+		assertEquals(6, result);
+	}
+
 }
