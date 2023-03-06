@@ -13,7 +13,9 @@ No parameters are necessary to run this program.
 The main method add() is in the class KataMain
 
 ## Technical resources
-IDE: Eclipse version 2022-12 (4.26.0) Java 19 JUnit 5
+IDE: Eclipse version 2022-12 (4.26.0)
+Java 19
+JUnit 5
 
 ## Owner
 Pablo Tejero
